@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.next/
+out/
+.env
+.env.local
+.env.*.local
+package-lock.json
+pnpm-debug.log*
+.pnpm-store/
+.vercel/
+.DS_Store
+next-env.d.ts

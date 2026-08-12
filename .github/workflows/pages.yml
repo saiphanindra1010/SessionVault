@@ -5,7 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
-permissions: write-all
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 # Deployments must not be cancelled midway, otherwise Pages can be left
 # serving a half-published artifact.

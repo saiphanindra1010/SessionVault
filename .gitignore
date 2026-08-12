@@ -5,9 +5,8 @@ out/
 .env
 .env.local
 .env.*.local
-package-lock.json
-pnpm-debug.log*
-.pnpm-store/
+npm-debug.log*
 .vercel/
 .DS_Store
 next-env.d.ts
+SYSTEM_DESIGN.md

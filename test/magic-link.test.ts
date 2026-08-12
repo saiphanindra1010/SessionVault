@@ -5,7 +5,7 @@ import { authStore } from "./fake-auth-db.js";
 process.env.DATABASE_URL = "postgres://fake:fake@localhost:5432/fake";
 
 vi.mock("@neondatabase/serverless", () => ({
-  Pool: vi.fn().mockImplementation(() => new FakePool()),
+  Pool: FakePool,
   neon: vi.fn(),
 }));
 

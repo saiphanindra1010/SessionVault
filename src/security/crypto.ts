@@ -112,7 +112,7 @@ export function unwrapKey(wrapped: Buffer, nonce: Buffer, masterKey: Buffer): Bu
 export function loadMasterKey(raw: string | undefined): Buffer {
   if (!raw || !raw.trim()) {
     throw new Error(
-      "SESSIONVAULT_MASTER_KEY is missing. Generate one with `pnpm sv:generate-keys` " +
+      "SESSIONVAULT_MASTER_KEY is missing. Generate one with `npm run sv:generate-keys` " +
         "and set it in your environment before starting the server."
     );
   }
@@ -120,7 +120,7 @@ export function loadMasterKey(raw: string | undefined): Buffer {
   if (PLACEHOLDER_MARKERS.some((m) => trimmed.includes(m))) {
     throw new Error(
       "SESSIONVAULT_MASTER_KEY still contains the example placeholder. " +
-        "Generate a real key with `pnpm sv:generate-keys`."
+        "Generate a real key with `npm run sv:generate-keys`."
     );
   }
   let buf: Buffer;

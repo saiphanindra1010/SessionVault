@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { sqlAsAdmin } from "@/src/neon/client";
@@ -79,12 +78,10 @@ export default async function DashboardPage({
   return (
     <div className="shell">
       <nav className="site-nav">
-        <Link href="/" className="brand">
+        <span className="brand">
           Session<span>Vault</span>
-        </Link>
+        </span>
         <div className="nav-links">
-          <Link href="/">Home</Link>
-          <Link href="/dashboard">Dashboard</Link>
           <form method="POST" action="/api/auth/logout" style={{ display: "inline" }}>
             <button type="submit" className="btn btn-ghost btn-small">
               Log out

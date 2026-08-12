@@ -3,7 +3,7 @@
  * Apply sql/schema.sql to the DATABASE_URL. Idempotent — safe to re-run.
  *
  * Usage:
- *   DATABASE_URL="postgres://..." pnpm sv:setup-db
+ *   DATABASE_URL="postgres://..." npm run sv:setup-db
  */
 import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";

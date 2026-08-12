@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SessionVault</title>
+    <meta
+      name="description"
+      content="Shared session memory for MCP clients. Integrate Claude, Cursor, and VS Code."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <nav class="nav">
+        <span class="brand">Session<span>Vault</span></span>
+        <div class="links">
+          <a
+            id="github-link"
+            class="btn"
+            href="https://github.com/saiphanindra1010/sessionvault"
+            >GitHub</a
+          >
+        </div>
+      </nav>
+
+      <header class="hero">
+        <h1>SessionVault</h1>
+        <p>
+          Shared session memory for MCP clients. Save structured context in one
+          tool, load it in another.
+        </p>
+      </header>
+
+      <section id="integrate" class="section">
+        <h2>Integrate</h2>
+        <p>
+          Create an API key in the app dashboard, then add this to your MCP
+          client config. Replace the URL and key with yours.
+        </p>
+        <pre id="mcp-snippet">{
+  "mcpServers": {
+    "sessionvault": {
+      "url": "https://YOUR_APP.vercel.app/api/mcp",
+      "headers": {
+        "Authorization": "Bearer sv_live_YOUR_KEY"
+      }
+    }
+  }
+}</pre>
+
+        <div class="list">
+          <div class="item">
+            <h3>Claude Desktop</h3>
+            <p>
+              <code
+                >~/Library/Application
+                Support/Claude/claude_desktop_config.json</code
+              >
+            </p>
+            <p>Paste the snippet, restart Claude Desktop.</p>
+          </div>
+          <div class="item">
+            <h3>Cursor</h3>
+            <p><code>~/.cursor/mcp.json</code></p>
+            <p>Paste the snippet, restart Cursor.</p>
+          </div>
+          <div class="item">
+            <h3>VS Code</h3>
+            <p>MCP settings for your extension</p>
+            <p>Add a remote MCP server with the bearer header.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tools" class="section">
+        <h2>Tools</h2>
+        <div class="list">
+          <div class="item">
+            <h3>save_session</h3>
+            <p>Upsert a structured session record.</p>
+          </div>
+          <div class="item">
+            <h3>load_session</h3>
+            <p>Exact name lookup.</p>
+          </div>
+          <div class="item">
+            <h3>search_sessions</h3>
+            <p>Semantic search over embeddings.</p>
+          </div>
+          <div class="item">
+            <h3>list_sessions / delete_session</h3>
+            <p>List newest first, or delete by name.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Links</h2>
+        <p>
+          <a id="github-link-2" href="https://github.com/saiphanindra1010/sessionvault"
+            >Source on GitHub</a
+          >
+          ·
+          <a id="app-link-2" href="#">Sign in to the app</a>
+          ·
+          <a href="https://github.com/saiphanindra1010/sessionvault/blob/main/BLOG.md"
+            >Design notes</a
+          >
+        </p>
+      </section>
+
+      <footer class="footer">SessionVault</footer>
+    </div>
+
+    <script src="config.js"></script>
+  </body>
+</html>

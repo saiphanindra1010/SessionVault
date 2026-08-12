@@ -6,8 +6,7 @@ export const metadata: Metadata = {
     default: "SessionVault",
     template: "%s · SessionVault",
   },
-  description:
-    "Shared session context for MCP clients. Save in one tool, load in another.",
+  description: "Sign in to manage SessionVault API keys.",
 };
 
 export default function RootLayout({

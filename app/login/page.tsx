@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const ERR: Record<string, string> = {
   email: "Enter a valid email address.",
   rate: "Too many login attempts. Try again in an hour.",
@@ -20,17 +18,14 @@ export default async function LoginPage({
   return (
     <div className="shell">
       <nav className="site-nav">
-        <Link href="/" className="brand">
+        <span className="brand">
           Session<span>Vault</span>
-        </Link>
-        <div className="nav-links">
-          <Link href="/">Home</Link>
-        </div>
+        </span>
       </nav>
 
       <section className="section" style={{ borderTop: "none", maxWidth: 360 }}>
         <h2>Sign in</h2>
-        <p>One-time email link. No password.</p>
+        <p>One-time email link. New emails create an account on first verify.</p>
 
         <div className="panel">
           {sent ? (

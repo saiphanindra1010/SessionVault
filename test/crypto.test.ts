@@ -87,7 +87,7 @@ describe("loadMasterKey", () => {
   });
 
   it("rejects placeholder values", () => {
-    expect(() => loadMasterKey("CHANGE_ME_run_pnpm_sv_generate_keys")).toThrow(
+    expect(() => loadMasterKey("CHANGE_ME_run_npm_sv_generate_keys")).toThrow(
       /placeholder/i
     );
     expect(() => loadMasterKey("REPLACE_ME_now")).toThrow(/placeholder/i);

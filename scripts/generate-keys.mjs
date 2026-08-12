@@ -4,7 +4,7 @@
  * Vercel project's Environment Variables settings.
  *
  * Usage:
- *   pnpm sv:generate-keys
+ *   npm run sv:generate-keys
  */
 import { randomBytes } from "node:crypto";
 

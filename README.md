@@ -1,24 +1,23 @@
 # SessionVault
 
-Shared session memory for MCP clients. Next.js SaaS on Vercel + Neon + pgvector.
+Two parts:
 
-Save structured context in Claude. Load it in Cursor. Encrypted at rest, tenant-isolated, API-key gated.
+1. **App** (Next.js on Vercel) — sign in, API keys, MCP endpoint  
+2. **Site** (`site/`, GitHub Pages) — integration docs, no signup
 
-## Quick start
-
-Accounts: [Vercel](https://vercel.com), [Neon](https://neon.tech), [OpenAI](https://platform.openai.com), [Resend](https://resend.com).
+## App (Vercel)
 
 ```bash
-pnpm install
-pnpm sv:generate-keys          # copy into Vercel env / .env.local
+npm install
+npm run sv:generate-keys
 export DATABASE_URL="postgres://...neon.../neondb?sslmode=require"
-pnpm sv:setup-db
-pnpm dlx vercel                # set env from .env.vercel.example
+npm run sv:setup-db
+npx vercel
 ```
 
-Required env: `DATABASE_URL`, `OPENAI_API_KEY`, `SESSIONVAULT_MASTER_KEY`, `SESSIONVAULT_AUDIT_SALT`, `PUBLIC_URL`, `RESEND_API_KEY` (required in production).
+Set env from `.env.vercel.example`. App root redirects to `/login`.
 
-Sign in at your deployment URL, create an API key, then:
+MCP config after you create a key:
 
 ```json
 {
@@ -31,38 +30,27 @@ Sign in at your deployment URL, create an API key, then:
 }
 ```
 
-Local UI: copy `.env.example` to `.env.local`, then `pnpm dev`.
+## Site (GitHub Pages)
 
-## Tools
+Static HTML in `site/`. Edit `site/config.js`:
 
-| Tool | Purpose |
-|---|---|
-| `save_session` | Upsert structured session (encrypted) |
-| `load_session` | Exact name lookup |
-| `search_sessions` | Semantic search (pgvector) |
-| `list_sessions` | Newest first |
-| `delete_session` | Delete by name |
+```js
+APP_URL: "https://your-app.vercel.app",
+GITHUB_URL: "https://github.com/saiphanindra1010/sessionvault",
+```
 
-## Architecture
-
-- **App:** Next.js (dashboard + magic-link auth + MCP route)
-- **DB:** Neon Postgres + pgvector
-- **Crypto:** AES-256-GCM envelope (per-user DEK)
-- **Tenancy:** Forced Postgres RLS
-- **Agent auth:** Bearer `sv_live_...` (hashed at rest)
-
-See [SECURITY.md](./SECURITY.md) and [SYSTEM_DESIGN.md](./SYSTEM_DESIGN.md).
+Enable Pages: repo Settings → Pages → Source = GitHub Actions.  
+Push to `main` runs `.github/workflows/pages.yml`.
 
 ## Scripts
 
 | Script | Role |
 |---|---|
-| `pnpm dev` | Next.js local |
-| `pnpm build` / `pnpm start` | Production Next build/serve |
-| `pnpm test` | Unit tests |
-| `pnpm sv:generate-keys` | Master key + audit salt |
-| `pnpm sv:setup-db` | Apply `sql/schema.sql` |
-| `pnpm sv:create-user` | Optional CLI user + key |
+| `npm run dev` | Next app locally |
+| `npm run build` / `npm start` | Production app |
+| `npm test` | Unit tests |
+| `npm run sv:generate-keys` | Master key + audit salt |
+| `npm run sv:setup-db` | Apply schema |
 
 ## License
 

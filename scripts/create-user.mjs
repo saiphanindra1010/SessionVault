@@ -3,7 +3,7 @@
  * Provision a new SessionVault user + API key.
  *
  * Usage:
- *   pnpm sv:create-user -- --email you@example.com --name "you"
+ *   npm run sv:create-user -- --email you@example.com --name "you"
  *
  * On success, prints the API key EXACTLY ONCE. Copy it now — we only ever
  * store its hash.
@@ -17,7 +17,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 
 const args = parseArgs(process.argv.slice(2));
 if (!args.email) {
-  console.error("Usage: pnpm sv:create-user -- --email you@example.com [--name label]");
+  console.error("Usage: npm run sv:create-user -- --email you@example.com [--name label]");
   process.exit(1);
 }
 
@@ -29,7 +29,7 @@ if (!dbUrl) {
   process.exit(1);
 }
 if (!masterKeyB64) {
-  console.error("SESSIONVAULT_MASTER_KEY is required. Run: pnpm sv:generate-keys");
+  console.error("SESSIONVAULT_MASTER_KEY is required. Run: npm run sv:generate-keys");
   process.exit(1);
 }
 

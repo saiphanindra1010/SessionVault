@@ -10,3 +10,4 @@ npm-debug.log*
 .DS_Store
 next-env.d.ts
 SYSTEM_DESIGN.md
+SECURITY.md

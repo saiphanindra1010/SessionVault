@@ -3,9 +3,6 @@ name: GitHub Pages
 on:
   push:
     branches: [main]
-    paths:
-      - "site/**"
-      - ".github/workflows/pages.yml"
   workflow_dispatch:
 
 permissions:
@@ -13,9 +10,11 @@ permissions:
   pages: write
   id-token: write
 
+# Deployments must not be cancelled midway, otherwise Pages can be left
+# serving a half-published artifact.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -27,10 +26,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: ./site
 
       - id: deployment
         uses: actions/deploy-pages@v4

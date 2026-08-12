@@ -39,8 +39,9 @@ APP_URL: "https://your-app.vercel.app",
 GITHUB_URL: "https://github.com/saiphanindra1010/sessionvault",
 ```
 
-Enable Pages: repo Settings → Pages → Source = GitHub Actions.  
-Push to `main` runs `.github/workflows/pages.yml`.
+Every push to `main` runs `.github/workflows/pages.yml`, which enables Pages
+(Actions source) on first run and publishes `site/`. You can also trigger it
+manually from the Actions tab.
 
 ## Scripts
 
